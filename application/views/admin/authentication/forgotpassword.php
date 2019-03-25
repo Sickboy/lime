@@ -49,7 +49,7 @@
                             <input type="hidden" name="action" value="forgotpass" />
                             <input class="action btn btn-default" type="submit" value="<?php eT('Check data'); ?>" />
                             <br/><br/>
-                            <a href="<?php echo $this->createUrl("/admin"); ?>"><?php eT('Main Admin Screen'); ?></a>
+                            <a href="<?php echo $this->createUrl("/"); ?>"><?php eT('Back'); ?></a>
                         </div>
 
                     </div>

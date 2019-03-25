@@ -134,7 +134,8 @@ class Authentication extends Survey_Common_Action
                 // THen, it checks if the the user set a different default plugin auth in application/config/config.php
                 // eg: 'config'=>array()'debug'=>2,'debugsql'=>0, 'default_displayed_auth_method'=>'muh_auth_method')
                 if (App()->getPluginManager()->isPluginActive(Yii::app()->getConfig('default_displayed_auth_method'))) {
-                        $aData['defaultAuth'] = Yii::app()->getConfig('default_displayed_auth_method');
+                        //$aData['defaultAuth'] = Yii::app()->getConfig('default_displayed_auth_method');
+                        $aData['defaultAuth'] = 'Authdb';
                     } else {
                         $aData['defaultAuth'] = 'Authdb';
                     }
