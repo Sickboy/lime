@@ -8,7 +8,7 @@ class IndexController extends LSYii_Controller
     {
         if (Yii::app()->user->id != NULL)
             {
-                header("Location: https://ankiety.umk.pl/v3/admin");
+                header("Location: ".$this->createUrl('admin/')."");
                 die();
             }
 
