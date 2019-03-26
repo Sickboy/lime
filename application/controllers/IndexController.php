@@ -12,7 +12,7 @@ class IndexController extends LSYii_Controller
                 die();
             }
 
-        echo '<nav class="navbar navbar-xs bg-light" style="margin-top: -60px;"  >
+        echo '<nav class="navbar navbar-xs bg-light" style="margin-top: -50px;"  >
         <a class="navbar-brand" href="#">System Badań Ankietowych</a>
       </nav>';
 
