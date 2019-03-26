@@ -20,7 +20,7 @@ class IndexController extends LSYii_Controller
         <div class="row text-center">';
 
         echo '<br><br><link href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/sticky-footer.css" rel="stylesheet">';
-        echo '<a href="https://ankiety.umk.pl/v3/admin" class="btn btn-default btn-lg"><i class="fa fa-sign-in"></i>&nbspLogowanie UMK</a><br>
+        echo '<a href="'.$this->createUrl('admin/').'" class="btn btn-default btn-lg"><i class="fa fa-sign-in"></i>&nbspLogowanie UMK</a><br>
             <a href="#modalLoginGuest" data-toggle="modal" class="btn btn-default btn-lg"><i class="fa fa-sign-in"></i>&nbspLogowanie Gości</a>';
         
         echo '<div id="modalLoginGuest" class="modal fade" role="dialog">
