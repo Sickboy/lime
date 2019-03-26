@@ -425,7 +425,8 @@ class AuthCAS extends AuthPluginBase
         // disable SSL validation of the CAS server
         phpCAS::setNoCasServerValidation();
         // logout from CAS
-        phpCAS::logout(array('service'=>'https://'.$_SERVER['SERVER_NAME'].'/v3/', 'url'=>'https://'.$_SERVER['SERVER_NAME'].'/v3/'));
+        
+        phpCAS::logout(array('url'=>'https://'.$_SERVER['SERVER_NAME'].'/v3/'));
     }
 
 }
