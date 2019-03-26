@@ -53,7 +53,7 @@ foreach($systemInfos as &$systemInfo) {
         <div class="row">
             <!-- Link to manual -->
             <div class="col-xs-6 col-sm-4 ">
-                <a href='https://ankiety.umk.pl/v3/index.php/admin/help' target="_blank"\>
+                <a href='<?php echo $this->createUrl('admin/help/index') ?>' target="_blank"\>
                     <span class="fa fa-life-ring" id="info-footer"></span>
                 <a href='mailto:ankiety@umk.pl' \>
                     <span class="fa fa-envelope" id="info-footer"></span>
