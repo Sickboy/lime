@@ -103,6 +103,13 @@
             $this->subscribe('beforeLogout');
             $this->subscribe('afterSuccessfulLogin');
             $this->subscribe('afterFailedLoginAttempt');
+            $this->subscribe('onListsurveys');
+            $this->subscribe('onViewsurvey');
+            $this->subscribe('onDisplayparticipants');
+            $this->subscribe('addNewtoken');
+            $this->subscribe('delParticipant');
+            $this->subscribe('addNewsurvey');
+            $this->subscribe('delSurvey');
         }
 
         /**
@@ -115,6 +122,145 @@
             return $pluginsettings[$settingName]['current'] == 1;
         }
 
+        //LP
+        public function delSurvey()
+        {
+            $oUser = $this->api->getCurrentUser();
+            if ($oUser != false)
+            {
+                $event = $this->getEvent();
+                $postSurvey=$event->get('survey');
+                $iUserID = $oUser->uid;
+                $oAutoLog = $this->api->newModel($this, 'log');
+                $oAutoLog->uid=$iUserID;
+                $oAutoLog->entity='user';
+                $oAutoLog->entityid=$iUserID;
+                $oAutoLog->action='delSurvey';
+                $oAutoLog->newvalues="surveyId: ".$postSurvey;
+                $oAutoLog->save();
+            }
+
+        }
+
+        //LP
+        public function addNewsurvey()
+        {
+            $oUser = $this->api->getCurrentUser();
+            if ($oUser != false)
+            {
+                $event = $this->getEvent();
+                $postSurvey=$event->get('survey');
+                $iUserID = $oUser->uid;
+                $oAutoLog = $this->api->newModel($this, 'log');
+                $oAutoLog->uid=$iUserID;
+                $oAutoLog->entity='user';
+                $oAutoLog->entityid=$iUserID;
+                $oAutoLog->action='addNewsurvey';
+                $oAutoLog->newvalues="surveyId: ".$postSurvey;
+                $oAutoLog->save();
+            }
+
+        }
+
+        public function delParticipant()
+        {
+            $oUser = $this->api->getCurrentUser();
+            if ($oUser != false)
+            {
+                $iUserID = $oUser->uid;
+                $event = $this->getEvent();
+                $dToken=$event->get('dToken');
+                $oAutoLog = $this->api->newModel($this, 'log');
+                $oAutoLog->uid=$iUserID;
+                $oAutoLog->entity='user';
+                $oAutoLog->entityid=$iUserID;
+                $oAutoLog->action='delParticipant';
+                $oAutoLog->fields='firstname, lastname, email';
+                $oAutoLog->newvalues=$dToken;
+                $oAutoLog->save();
+            }
+
+        }
+
+        //LP
+        public function addNewtoken()
+        {
+            $oUser = $this->api->getCurrentUser();
+            if ($oUser != false)
+            {
+                $event = $this->getEvent();
+                $postFirstname=$event->get('firstname');
+                $postLastname=$event->get('lastname');
+                $postEmail=$event->get('email');
+                $iUserID = $oUser->uid;
+                $oAutoLog = $this->api->newModel($this, 'log');
+                $oAutoLog->uid=$iUserID;
+                $oAutoLog->entity='user';
+                $oAutoLog->entityid=$iUserID;
+                $oAutoLog->action='addNewparticipants';
+                $oAutoLog->fields='{firstname, lastname, email}';
+                $oAutoLog->newvalues="{".$postFirstname.", ".$postLastname.", ".$postEmail."}";
+                $oAutoLog->save();
+            }
+
+        }
+
+        //LP
+        public function onListsurveys()
+        {
+            $oUser = $this->api->getCurrentUser();
+            if ($oUser != false)
+            {
+                $iUserID = $oUser->uid;
+                $oAutoLog = $this->api->newModel($this, 'log');
+                $oAutoLog->uid=$iUserID;
+                $oAutoLog->entity='user';
+                $oAutoLog->entityid=$iUserID;
+                $oAutoLog->action='onListsurveys';
+                $oAutoLog->save();
+            }
+
+        }
+
+        //LP
+        public function onDisplayparticipants()
+        {
+            $oUser = $this->api->getCurrentUser();
+            if ($oUser != false)
+            {
+                $iUserID = $oUser->uid;
+                $event = $this->getEvent();
+                $surveyId=$event->get('surveyId');
+                $oAutoLog = $this->api->newModel($this, 'log');
+                $oAutoLog->uid=$iUserID;
+                $oAutoLog->entity='user';
+                $oAutoLog->entityid=$iUserID;
+                $oAutoLog->action='onDisplayparticipants';
+                $oAutoLog->newvalues='surveyid: '.$surveyId;
+                $oAutoLog->save();
+            }
+
+        }
+
+        //LP
+        public function onViewsurvey()
+        {
+            $oUser = $this->api->getCurrentUser();
+            if ($oUser != false)
+            {
+                $event = $this->getEvent();
+                $surveyId=$event->get('surveyId');
+                $iUserID = $oUser->uid;
+                $oAutoLog = $this->api->newModel($this, 'log');
+                $oAutoLog->uid=$iUserID;
+                $oAutoLog->entity='user';
+                $oAutoLog->entityid=$iUserID;
+                $oAutoLog->action='onViewsurvey';
+                $oAutoLog->newvalues='surveyid: '.$surveyId;
+                $oAutoLog->save();
+            }
+
+        }
 
         /**
         * User logout to the audit log

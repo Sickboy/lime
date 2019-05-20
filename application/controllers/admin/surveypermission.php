@@ -32,6 +32,7 @@ class surveypermission extends Survey_Common_Action
      */
     public function index($iSurveyID)
     {
+       
         $aData = array();
         $aData['surveyid'] = $iSurveyID = sanitize_int($iSurveyID);
         $oSurvey = Survey::model()->findByPk($iSurveyID);

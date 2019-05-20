@@ -91,6 +91,11 @@ class SurveyAdmin extends Survey_Common_Action
         $aData['groupModel'] = new SurveysGroups('search');
         $aData['fullpagebar']['button']['newsurvey'] = true;
         $this->_renderWrappedTemplate('survey', 'listSurveys_view', $aData);
+
+        $onListsurveys = new PluginEvent('onListsurveys');
+        App()->getPluginManager()->dispatchEvent($onListsurveys);
+
+
     }
 
     /**
@@ -146,6 +151,7 @@ class SurveyAdmin extends Survey_Common_Action
      */
     public function newsurvey()
     {
+
         if (!Permission::model()->hasGlobalPermission('surveys', 'create')) {
             Yii::app()->user->setFlash('error', gT("Access denied"));
             $this->getController()->redirect(Yii::app()->request->urlReferrer);
@@ -465,6 +471,10 @@ class SurveyAdmin extends Survey_Common_Action
         $beforeSurveyAdminView = new PluginEvent('beforeSurveyAdminView');
         $beforeSurveyAdminView->set('surveyId', $iSurveyID);
         App()->getPluginManager()->dispatchEvent($beforeSurveyAdminView);
+
+        $onViewsurvey = new PluginEvent('onViewsurvey');
+        $onViewsurvey->set('surveyId', $iSurveyID);
+        App()->getPluginManager()->dispatchEvent($onViewsurvey);
 
         // We load the panel packages for quick actions
         $iSurveyID = sanitize_int($iSurveyID);
@@ -948,7 +958,11 @@ class SurveyAdmin extends Survey_Common_Action
             Yii::app()->user->setFlash('error', gT("Access denied"));
             $this->getController()->redirect(Yii::app()->request->urlReferrer);
         }
+        
 
+        $delSurvey = new PluginEvent('delSurvey');
+        $delSurvey->set('survey', $iSurveyID);
+        App()->getPluginManager()->dispatchEvent($delSurvey);
 
         $this->_renderWrappedTemplate('survey', $aViewUrls, $aData);
     }
@@ -2185,6 +2199,10 @@ class SurveyAdmin extends Survey_Common_Action
 
             // Figure out destination
 
+            $addNewsurvey = new PluginEvent('addNewsurvey');
+            $addNewsurvey->set('survey', $iNewSurveyid);
+            App()->getPluginManager()->dispatchEvent($addNewsurvey);
+
             if ($createSample) {
                 $iNewGroupID = $this->_createSampleGroup($iNewSurveyid);
                 $iNewQuestionID = $this->_createSampleQuestion($iNewSurveyid, $iNewGroupID);
@@ -2212,6 +2230,7 @@ class SurveyAdmin extends Survey_Common_Action
                 false
             );
         }
+
         $this->getController()->redirect(Yii::app()->request->urlReferrer);
 
     }

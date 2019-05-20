@@ -1400,6 +1400,7 @@ class dataentry extends Survey_Common_Action
      */
     public function insert()
     {
+        
         $subaction = Yii::app()->request->getPost('subaction');
         $surveyid = (int) Yii::app()->request->getPost('sid');
 
@@ -1735,6 +1736,7 @@ class dataentry extends Survey_Common_Action
      */
     public function view($surveyid)
     {
+        
         $surveyid = sanitize_int($surveyid);
         $survey = Survey::model()->findByPk($surveyid);
         $lang = isset($_GET['lang']) ? $_GET['lang'] : null;

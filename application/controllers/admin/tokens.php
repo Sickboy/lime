@@ -264,6 +264,24 @@ class tokens extends Survey_Common_Action
             throw new CHttpException(405, gT("Invalid action"));
         }
         TokenDynamic::model($iSid)->deleteRecords(array($aTokenId));
+
+        $dToken = Yii::app()->db->createCommand()
+            ->select('firstname, lastname, email')
+            ->from('lime_tokens_'.$iSid)
+            ->where('tid='.$aTokenId)
+            ->queryRow(); 
+        
+        $dT = '';
+
+        foreach ($dToken as $dTokens){
+            $dT = +', '.$dTokens;
+
+        }
+
+        $delParticipant = new PluginEvent('delParticipant');
+        $delParticipant->set('dToken', $dT);
+        App()->getPluginManager()->dispatchEvent($delParticipant);     
+        
         return true;
     }
 
@@ -276,6 +294,10 @@ class tokens extends Survey_Common_Action
      */
     public function browse($iSurveyId, $limit = 50, $start = 0)
     {
+        $onDisplayparticipants = new PluginEvent('onDisplayparticipants');
+        $onDisplayparticipants->set('surveyId', $iSurveyId);
+        App()->getPluginManager()->dispatchEvent($onDisplayparticipants);
+
         $iSurveyId = (int) $iSurveyId;
         $survey = Survey::model()->findByPk($iSurveyId);
 
@@ -603,6 +625,7 @@ class tokens extends Survey_Common_Action
      */
     public function addnew($iSurveyId)
     {
+        
         $aData = array();
         App()->getClientScript()->registerScriptFile(App()->getConfig('adminscripts').'tokens.js', LSYii_ClientScript::POS_BEGIN);
         $iSurveyId = (int) $iSurveyId;
@@ -693,6 +716,8 @@ class tokens extends Survey_Common_Action
                 $inresult = $token->save();
                 $aData['success'] = $inresult;
                 $aData['errors'] = $token->getErrors();
+
+
             } else {
                 $aData['success'] = false;
                 $aData['errors'] = array(
@@ -705,6 +730,12 @@ class tokens extends Survey_Common_Action
             $aData['iTokenLength'] = !empty(Token::model($iSurveyId)->survey->tokenlength) ? Token::model($iSurveyId)->survey->tokenlength : 15;
 
             $aData['sidemenu']['state'] = false;
+
+            $addNewtoken = new PluginEvent('addNewtoken');
+            $addNewtoken->set('firstname', $aData['firstname']);
+            $addNewtoken->set('lastname', $aData['lastname']);
+            $addNewtoken->set('email', $aData['email']);
+            App()->getPluginManager()->dispatchEvent($addNewtoken);
 
             $this->_renderWrappedTemplate('token', array('addtokenpost'), $aData);
         } else {
@@ -850,6 +881,7 @@ class tokens extends Survey_Common_Action
      */
     public function delete($iSurveyID)
     {
+        
         App()->getClientScript()->registerScriptFile(App()->getConfig('adminscripts').'tokens.js', LSYii_ClientScript::POS_BEGIN);
         $iSurveyID = (int) $iSurveyID;
         $sTokenIDs = Yii::app()->request->getPost('tid');

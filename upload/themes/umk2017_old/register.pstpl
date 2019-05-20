@@ -1,0 +1,15 @@
+<div id="umk-header">
+    <div id="umk-logo"></div>
+    <div id="umk-surveyname">{SURVEYNAME}</div>
+</div>
+
+<div id="umk-wrap">
+    <div class="umk-head"><p>Rejestracja do ankiety</p></div>
+    <div id="umk-welcome">
+        <span class="warning-text">{REGISTERERROR}</span>
+            <p class="register-message-1">{REGISTERMESSAGE1}</p>
+            <p class="register-message-2">{REGISTERMESSAGE2}</p>
+            <div class="register-form">{REGISTERFORM}</div>
+    </div>
+</div>
+

@@ -1,0 +1,20 @@
+
+<div id="umk-header">
+    <div id="umk-logo"></div>
+    <div id="umk-surveyname">{SURVEYNAME}</div>
+</div>
+
+<div id="umk-wrap">
+    <div class="umk-head"><p>{LOADHEADING}</p></div>
+    <div id="umk-welcome">
+        <br />
+            <p class="load-error">{LOADERROR}</p>
+            <p class="load-message">{LOADMESSAGE}</p>
+            <br />
+            <div class="load-form">{LOADFORM}</div>
+            <br />
+            <span class="return-to-survey">{RETURNTOSURVEY}</span>
+            <br /><br />
+    </div>
+</div>
+

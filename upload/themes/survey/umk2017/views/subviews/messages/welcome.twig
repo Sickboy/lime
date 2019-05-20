@@ -20,16 +20,15 @@
     {{ dump(aSurveyInfo) }}
 
 #}
-<div id="umk-logo"></div>
-<div id="umk-header">
+
 <!-- Welcome Message -->
 <div id="{{ aSurveyInfo.id.welcomecontainer }}" class="{{ aSurveyInfo.class.welcomecontainer }}" {{ aSurveyInfo.attr.welcomecontainer }}>
-<div id="umk-surveyname">
+
     <!-- Survey Name -->
     <h1 class="{{ aSurveyInfo.class.surveyname }} text-center" {{ aSurveyInfo.attr.surveyname }} >
         {{ processString(aSurveyInfo.name,1) }}
     </h1>
-</div>
+
     <!-- Survey description -->
     <div class="{{ aSurveyInfo.class.description }} text-info text-center" {{ aSurveyInfo.attr.description }}>
         {{ processString(aSurveyInfo.description,1) }}
@@ -56,5 +55,4 @@
             {% endif %}
         </div>
   </div>
-</div>
 </div>

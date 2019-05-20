@@ -1,0 +1,19 @@
+<div id="umk-header">
+    <div id="umk-logo"></div>
+    <div id="umk-surveyname">{SURVEYNAME}</div>
+</div>
+
+<div id="umk-wrap">
+    <div class="umk-head"><p>{SAVEHEADING}</p></div>
+    <div id="umk-welcome">
+         <br />
+            <p class="save-error">{SAVEERROR}</p>
+            <p class="save-message">{SAVEMESSAGE}</p>
+            <span class="warning">{SAVEALERT}</span></p>
+            <br />
+            <div class="save-form">{SAVEFORM}</div>
+            <br />
+            <span class="return-to-survey">{RETURNTOSURVEY}</span>
+            <br /><br />
+    </div>
+</div>

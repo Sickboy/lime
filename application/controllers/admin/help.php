@@ -21,6 +21,8 @@ class Help extends Survey_Common_Action
     {
 
         //$aData = 'asd';
+        
+        
         $this->_renderWrappedTemplate('help', 'view'/*, $aData */);
 
 

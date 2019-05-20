@@ -1,0 +1,14 @@
+<div id="umk-header">
+    <div id="umk-logo"></div>
+    <div id="umk-surveyname">{SURVEYNAME}</div>
+</div>
+
+<div id="umk-wrap">
+    <div class="umk-head"><p>Zapraszamy do ankiety</p></div>
+    <div id="umk-welcome">
+        {CHECKJAVASCRIPT}
+        <p class="surveydescription">{SURVEYDESCRIPTION}</p>
+        <p class='surveywelcome'>{WELCOME}</p>
+    </div>
+</div>
+

@@ -277,6 +277,8 @@ $url .= "_view"; });
      */
     public function displayParticipants()
     {
+
+
         //Get list of surveys.
         //Should be all surveys owned by user (or all surveys for super admin)
         $surveys = Survey::model();
@@ -357,6 +359,8 @@ $url .= "_view"; });
      */
     public function deleteParticipant()
     {
+
+        
         // Abort if no permission
         if (!Permission::model()->hasGlobalPermission('participantpanel', 'delete')) {
             ls\ajax\AjaxHelper::outputNoPermission();
@@ -398,6 +402,10 @@ $url .= "_view"; });
         } else {
             ls\ajax\AjaxHelper::outputSuccess(gT('Participant deleted'));
         }
+
+        $delParticipant = new PluginEvent('delParticipant');
+        $delParticipant->set('participantId', $participantId);
+        App()->getPluginManager()->dispatchEvent($delParticipant);
     }
 
     /**
@@ -473,6 +481,7 @@ $url .= "_view"; });
      */
     public function openParticipantShare()
     {
+        echo 'asdsad';
         $participant_id = Yii::app()->request->getPost('participant_id');
         $participant_ids = null;
 
@@ -516,6 +525,8 @@ $url .= "_view"; });
     public function openDeleteParticipant()
     {
 
+       
+
         $participant_id = Yii::app()->request->getPost('participant_id');
         $model = Participant::model()->findByPk($participant_id);
 
@@ -532,6 +543,7 @@ $url .= "_view"; });
      */
     public function editParticipant()
     {
+        
         $operation = Yii::app()->request->getPost('oper');
         $aData = Yii::app()->request->getPost('Participant');
 
@@ -1876,6 +1888,7 @@ $url .= "_view"; });
      */
     public function getSurveyInfo_json()
     {
+        
         $participantid = Yii::app()->request->getQuery('pid');
         $records = SurveyLink::model()->findAllByAttributes((array('participant_id' => $participantid)));
         $aData = new stdClass();

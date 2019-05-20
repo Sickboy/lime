@@ -6,29 +6,3 @@
     It will be loaded last, so you can override any other property.
     Also, it will never be updated. So if you inheritate a core template and just add here some CSS, you'll still benefit of all the updates
 */
-
-
-html{
-    font-family: lato;
-    color:#164193;
-}
-body {
-    background-color: #d0d9ea;
-    background-image: url("../files/logo.svg");
-    background-attachment: fixed; 
-    background-repeat: no-repeat;
-    background-position: 500px 200px;
-    background-size: cover;
-}
-#umk-logo{
-    background-image: url("../files/umk-01.svg");
-    position:absolute;
-    top: 15px;
-    left:50px;
-    width: 180px;
-    height:55px;
-    background-size:cover;
-}
-#umk-surveyname{
-
-}

@@ -1,0 +1,12 @@
+<div class="umk-navigator-wrap">
+    <div class="umk-save-all">
+            {SAVE}
+        </div>
+        
+        <div class="umk-clear-all">
+            {CLEARALL}
+        </div>
+<div class="umk-submit-buttons">
+            {NAVIGATOR}
+        </div>
+</div>

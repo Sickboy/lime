@@ -1,0 +1,6 @@
+
+<div id="umk-header">
+    <div id="umk-logo"></div>
+    <div id="umk-surveyname">{SURVEYNAME}</div>
+</div>
+

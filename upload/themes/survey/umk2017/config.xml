@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
 
     (¯`·._.·(¯`·._.· Vanilla Theme Manifest  ·._.·´¯)·._.·´¯)
@@ -7,22 +8,23 @@
     The content of this file is imported into DB when you install the template.
 
 -->
+
 <config>
     <!-- Those metadata are displayed in the theme configuration page.  -->
     <metadata>
-        <name>umk2017</name>
-        <title>umk2017</title>
+        <name>vanilla</name>
+        <title>Bootstrap Vanilla</title>
         <creationDate>16/10/2017</creationDate>
-        <author>UMK</author>
-        <authorEmail>ankiety@umk.pl</authorEmail>
-        <authorUrl>ankiety.umk.pl</authorUrl>
-        <copyright>All rights reserved.</copyright>
+        <author>Louis-Sébastien Gac Artigas</author>
+        <authorEmail>louis.gac@limesurvey.org</authorEmail>
+        <authorUrl>http://www.limesurvey.org</authorUrl>
+        <copyright>Copyright (C) 2005 - 2016 LimeSurvey Gmbh, Inc. All rights reserved.</copyright>
         <license>GNU General Public License version 2 or later</license>
-        <version>0.9</version>
+        <version>3.0</version>
         <apiVersion>3</apiVersion>
-        <description><![CDATA[<strong>umk2017</strong>.]]></description>
-        <last_update>2019-03-04 15:43:28</last_update>
-    </metadata>
+        <description><![CDATA[<strong>LimeSurvey Bootstrap Vanilla Survey Theme</strong><br>A clean and simple base that can be used by developers to create their own Bootstrap based theme.]]></description>
+        <last_update>2018-04-11 17:00:00</last_update>
+<extends>vanilla</extends>    </metadata>
 
     <!--
         Here the list of the css/js files to add to the template package.
