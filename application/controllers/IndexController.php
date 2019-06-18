@@ -41,8 +41,27 @@ class IndexController extends LSYii_Controller
         echo '          </div>
                     </div>
                 </div>
-            </div>';
-        echo '<footer class="footer">';
+            </div></div>';
+            echo "<div class='row ' >
+            <div style='margin-left: 25; margin-right: 25;'>
+            <br><u><b>Logując się akceptujesz regulamin korzystania z systemu:</b></u><br>
+            <ol>
+            <li>Z systemu badań ankietowych może korzystać każda osoba posiadająca konto na serwerach UMK.</li>
+            <li>Administrator systemu odpowiada za techniczne działanie systemu ankietowego. </li>
+            <li>Każdy użytkownik logujący się i korzystający z systemu ankietowego odpowiada merytorycznie za stworzoną przez siebie zawartość, w tym:</li>
+            <ul><li>treść ankiet i pytań do nich dołączonych,</li>
+            <li>tokeny  dodane do ankiet oraz dane w nich zawarte (np. imię, nazwisko, adres email respondentów),</li>
+            <li>wysyłane wiadomości e-mail za pośrednictwem systemu ankietowego.</li>
+            </ul>
+            <li>Administrator może pomóc w tworzeniu ankiety na prośbę innego użytkownika systemu, jednak odpowiedzialność za jej zawartość (pkt.3) pozostaje w gestii innego użytkownika systemu, który wnioskuje o pomoc.</li>
+            <li>Wszystkie czynności użytkownika w systemie są logowane i zapisywane. </li></ol>
+            W razie problemów lub pytań proszę kontaktować się poprzez email lub telefonicznie: 
+            <ul><li><a href='mailto:ankiety@umk.pl'>ankiety@umk.pl</a></li>
+            <li>56 611 4969</li>
+            </ul><br><br><br>
+            </div></div>";
+        
+        echo '<footer class="footer text-center">';
             echo "<a href='mailto:ankiety@umk.pl'>".gT("Pomoc techniczna")."</a>";
         echo  '</footer>';
 
